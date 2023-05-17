@@ -3,25 +3,25 @@
 set -eufo pipefail
 
 {{ $brews := list
-     "pnpm"
-     "jq" -}}
+     "jq"
+     "pnpm" -}}
 {{ $casks := list
-    "spotify"
-    "figma"
-    "slack"
-    "visual-studio-code"
-    "zoom"
-    "raycast"
-    "postman"
-    "monitorcontrol"
-    "arc"
-    "fork"
-    "cron"
-    "notion"
-    "cleanshot"
-    "nordvpn"
-    "logi-options-plus"
-    "karabiner-elements"
+     "spotify"
+     "figma"
+     "slack"
+     "visual-studio-code"
+     "zoom"
+     "raycast"
+     "postman"
+     "monitorcontrol"
+     "arc"
+     "fork"
+     "cron"
+     "notion"
+     "cleanshot"
+     "nordvpn"
+     "logi-options-plus"
+     "karabiner-elements"
      "fig" -}}
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
