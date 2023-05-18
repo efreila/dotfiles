@@ -4,6 +4,17 @@ set -eufo pipefail
 
 # https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+
 # Disables natural scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
@@ -33,7 +44,6 @@ defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 
 for app in "Dock" \
 	"SystemUIServer" \
-	"Terminal" \
 	"cfprefsd"; do
 	killall "${app}" &> /dev/null
 done
