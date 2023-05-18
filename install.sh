@@ -10,6 +10,12 @@ if ! command -v brew &> /dev/null
 then
     echo "Homebrew not found. Installing..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # If Apple Silicon, add Homebrew to PATH
+    if [[ $(uname -m) == 'arm64' ]]; then
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
 else
     echo "Homebrew is already installed."
 fi
