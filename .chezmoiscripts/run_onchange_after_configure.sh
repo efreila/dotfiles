@@ -18,6 +18,15 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Disables natural scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
+
+
+###############################################################################
+# Menu Bar                                                                    #
+###############################################################################
+
+# Displays Bluetooth in the menu bar
+defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Bluetooth -int 18
+
 ###############################################################################
 # Dock                                                                        #
 ###############################################################################
