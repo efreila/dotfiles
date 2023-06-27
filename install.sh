@@ -32,6 +32,10 @@ fi
 
 # -------------------------------------------------------------------------------------------------------------
 
+# Install PowerLevel10k Zsh theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# -------------------------------------------------------------------------------------------------------------
 # Check for chezmoi and install if we don't have it
 if [ ! "$(command -v chezmoi)" ]; then
   bin_dir="$HOME/.local/bin"
