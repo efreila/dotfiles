@@ -1,5 +1,16 @@
 [user]
 	name = Eric Freilafert
 	email = "{{ .email }}"
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDS8zZYDSRGRiqlIigVzKSFOvQqsI6roZ3Yqyxc5opdR
+	
 [init]
 	defaultBranch = main
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
