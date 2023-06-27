@@ -25,7 +25,7 @@ fi
 # Check for Oh My Zsh and install if we don't have it
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Oh My Zsh not found. Installing..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 else
     echo "Oh My Zsh is already installed."
 fi
