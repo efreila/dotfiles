@@ -27,6 +27,9 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 # Displays Bluetooth in the menu bar
 defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist Bluetooth -int 18
 
+# Displays battery percentage in the menu bar
+defaults write ~/Library/Preferences/ByHost/com.apple.controlcenter.plist BatteryShowPercentage -bool true
+
 ###############################################################################
 # Dock                                                                        #
 ###############################################################################
