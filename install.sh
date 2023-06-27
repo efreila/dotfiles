@@ -32,8 +32,13 @@ fi
 
 # -------------------------------------------------------------------------------------------------------------
 
-# Install PowerLevel10k Zsh theme
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+# Check for Powerlevel10k and install if not found
+if [[ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]]; then
+    echo "Powerlevel10k not found. Installing..."
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+else
+    echo "Powerlevel10k is already installed."
+fi
 
 # -------------------------------------------------------------------------------------------------------------
 # Check for chezmoi and install if we don't have it
@@ -52,7 +57,5 @@ else
   chezmoi=chezmoi
 fi
 
-# POSIX way to get script's dir: https://stackoverflow.com/a/29834779/12156188
-script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
 # exec: replace current process with chezmoi init
-exec "$chezmoi" init --apply "--source=$script_dir"
+exec "$chezmoi" init --apply efreila
