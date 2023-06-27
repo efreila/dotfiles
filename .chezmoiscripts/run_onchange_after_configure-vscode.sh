@@ -1,7 +1,6 @@
 {{ $extensions := list
      "redhat.vscode-yaml"
      "vscode-icons-team.vscode-icons"
-     "withfig.fig"
      "Prisma.prisma"
      "GitHub.copilot"
      "esbenp.prettier-vscode"
