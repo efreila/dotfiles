@@ -2,29 +2,25 @@
 
 set -eufo pipefail
 
-{{ $brews := list
-     "jq"
-     "pnpm" -}}
-{{ $casks := list
-     "spotify"
-     "figma"
-     "1password"
-     "slack"
-     "visual-studio-code"
-     "zoom"
-     "raycast"
-     "postman"
-     "monitorcontrol"
-     "arc"
-     "fork"
-     "cron"
-     "notion"
-     "cleanshot"
-     "nordvpn"
-     "logi-options-plus"
-     "iterm2"
-     "karabiner-elements"
-     "fig" -}}
+# Check for Homebrew and install if we don't have it
+if ! command -v brew &> /dev/null
+then
+    echo "Homebrew not found. Installing..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # If Apple Silicon, add Homebrew to PATH
+    if [[ $(uname -m) == 'arm64' ]]; then
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+else
+    echo "Homebrew is already installed."
+fi
+
+# Install packages from .chezmoidata/packages.yaml
+
+{{ $brews := .packages.brews -}}
+{{ $casks := .packages.casks -}}
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) -}}

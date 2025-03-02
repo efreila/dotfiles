@@ -4,24 +4,6 @@ set -e # -e: exit on error
 
 echo "Setting up your Mac..."
 
-
-# Check for Homebrew and install if we don't have it
-if ! command -v brew &> /dev/null
-then
-    echo "Homebrew not found. Installing..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    # If Apple Silicon, add Homebrew to PATH
-    if [[ $(uname -m) == 'arm64' ]]; then
-        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
-else
-    echo "Homebrew is already installed."
-fi
-
-# -------------------------------------------------------------------------------------------------------------
-
 # Check for Oh My Zsh and install if we don't have it
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Oh My Zsh not found. Installing..."
