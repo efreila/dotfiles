@@ -18,6 +18,12 @@
 
 set -eufo pipefail
 
+# Check if VS Code is installed
+if ! command -v code >/dev/null 2>&1; then
+  echo "VS Code is not installed. Skipping extension installation."
+  exit 0
+fi
+
 {{ range $extensions -}}
 code --install-extension {{ . }}
 {{ end -}}
