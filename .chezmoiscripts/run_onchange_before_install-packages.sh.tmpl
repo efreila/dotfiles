@@ -30,4 +30,7 @@ brew "{{ . }}"
 {{ range ($casks | sortAlpha | uniq) -}}
 cask "{{ . }}"
 {{ end -}}
-EOF || true
+EOF
+
+# Always exit with success
+exit 0
