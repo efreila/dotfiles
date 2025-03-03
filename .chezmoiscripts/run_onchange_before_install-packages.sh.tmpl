@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -uf
+set -ufo pipefail
 
 # Check for Homebrew and install if we don't have it
 if ! command -v brew &> /dev/null
@@ -22,7 +22,8 @@ fi
 {{ $brews := .packages.brews -}}
 {{ $casks := .packages.casks -}}
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
+# Install packages - continue even if some fail
+brew bundle --no-lock --file=/dev/stdin <<EOF || true
 {{ range ($brews | sortAlpha | uniq) -}}
 brew "{{ . }}"
 {{ end -}}
