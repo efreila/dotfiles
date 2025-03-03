@@ -22,9 +22,6 @@ fi
 {{ $brews := .packages.brews -}}
 {{ $casks := .packages.casks -}}
 
-# Install packages - continue even if some fail
-set +e  # Temporarily disable error handling
-{
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) -}}
 brew "{{ . }}"
@@ -33,5 +30,3 @@ brew "{{ . }}"
 cask "{{ . }}"
 {{ end -}}
 EOF
-} || true
-set -e  # Re-enable error handling if needed elsewhere

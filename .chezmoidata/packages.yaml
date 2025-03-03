@@ -9,7 +9,6 @@ packages:
     - 1password
     - slack
     - cursor
-    - zoom
     - raycast
     - postman
     - monitorcontrol
