@@ -23,6 +23,7 @@ fi
 {{ $casks := .packages.casks -}}
 
 # Install packages - continue even if some fail
+{
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range ($brews | sortAlpha | uniq) -}}
 brew "{{ . }}"
@@ -31,6 +32,4 @@ brew "{{ . }}"
 cask "{{ . }}"
 {{ end -}}
 EOF
-
-# Always exit with success
-exit 0
+} || true
