@@ -23,3 +23,12 @@ dotfiles, managed with [`chezmoi`](https://github.com/twpayne/chezmoi).
     ```
 
     This will install Homebrew, Oh My Zsh, Powerlevel10k, and Chezmoi. Running this installation script will also cause the scripts in [`.chezmoiscripts`](https://github.com/efreila/dotfiles/tree/main/.chezmoiscripts) to run.
+
+## Manual Tasks
+
+* Enable Night Shift in `System Preferences > Displays > Night Shift`
+* Install Chrome extensions
+  - 1Password
+* Install Slack apps
+  - Google Calendar 
+  
